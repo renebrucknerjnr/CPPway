@@ -4,6 +4,17 @@
   ./run.exe
  */
 
+// pacman -S mingw-w64-x86_64-cmake
+
+// git clone https://github.com/libsdl-org/SDL.git
+// cd SDL
+// mkdir build && cd build
+// cmake -G "MinGW Makefiles" -DBUILD_SHARED_LIBS=OFF -DSDL_STATIC=ON ..
+// mingw32-make
+
+
+// g++ main.cpp -o Cells.exe -I/c/msys64/mingw64/include/SDL2 -L/msys64/mingw64/lib -lSDL2 -lSDL2main -static
+
 // needed to prevent "undefined reference to `winMain`" (tells SDL that you are haldling the main function yourself)
 #define SDL_MAIN_HANDLED
 
@@ -47,8 +58,8 @@ int main() {
 	std::cout << "Use left mouse button to place" << std::endl;
 	std::cout << "Use right mouse button to remove" << std::endl;
 	bool running = true;
-	bool paused = false;
-	bool brainType = true;
+	bool paused = true;
+	bool brainType = false;
 	SDL_Event event;
 	unsigned int frameStart;
 	unsigned int frameTime;
@@ -61,39 +72,144 @@ int main() {
 	bool buffer2[80*60];
 
 	for (int i = 0; i < 4800; i++) {
-		buffer1[i] = rand()%100 < 45 ? 1 : 0; // use with terrain
-		// buffer1[i] = 0;
+		// buffer1[i] = rand()%100 < 45 ? 1 : 0; // use with terrain
+		buffer1[i] = 0;
 		buffer2[i] = 0;
 	}
-	// buffer1[2440] = 1;
-	// buffer1[2520] = 1;
-	// buffer1[2600] = 1;
-	// buffer1[2680] = 1;
-	// buffer1[2760] = 1;
-	// buffer1[2840] = 1;
-	// buffer1[2920] = 1;
-	// buffer1[3000] = 1;
-	// buffer1[2681] = 1;
-	// buffer1[2682] = 1;
-	// buffer1[2683] = 1;
-	// buffer1[2684] = 1;
-	// buffer1[2685] = 1;
 
-	// buffer1[2282] = 1;
-	// buffer1[2283] = 1;
-	// buffer1[2284] = 1;
-	// buffer1[2285] = 1;
-	// buffer1[2286] = 1;
-	// buffer1[2287] = 1;
+	// S
+	buffer1[81+0+80*0] = 1;
+	buffer1[81+0+80*1] = 1;
+	buffer1[81+0+80*2] = 1;
+	buffer1[81+1+80*2] = 1;
+	buffer1[81+2+80*2] = 1;
+	buffer1[81+2+80*3] = 1;
+	buffer1[81+2+80*4] = 1;
+	buffer1[81+1+80*4] = 1;
+	buffer1[81+0+80*4] = 1;
+	buffer1[81+1+80*0] = 1;
+	buffer1[81+2+80*0] = 1;
 	
-	// buffer1[2207] = 1;
-	// buffer1[2127] = 1;
-	// buffer1[2047] = 1;
-	// buffer1[1967] = 1;
+	// P
+	buffer1[85+0+80*0] = 1;
+	buffer1[85+1+80*0] = 1;
+	buffer1[85+2+80*0] = 1;
+	buffer1[85+2+80*1] = 1;
+	buffer1[85+2+80*2] = 1;
+	buffer1[85+1+80*2] = 1;
+	buffer1[85+0+80*2] = 1;
+	buffer1[85+0+80*1] = 1;
+	buffer1[85+0+80*3] = 1;
+	buffer1[85+0+80*4] = 1;
+	
+	// A
+	buffer1[89+1+80*0] = 1;
+	buffer1[89+0+80*1] = 1;
+	buffer1[89+0+80*2] = 1;
+	buffer1[89+1+80*2] = 1;
+	buffer1[89+0+80*3] = 1;
+	buffer1[89+0+80*4] = 1;
+	buffer1[89+2+80*1] = 1;
+	buffer1[89+2+80*2] = 1;
+	buffer1[89+2+80*3] = 1;
+	buffer1[89+2+80*4] = 1;
+	
+	// C
+	buffer1[93+1+80*0] = 1;
+	buffer1[93+2+80*0] = 1;
+	buffer1[93+0+80*1] = 1;
+	buffer1[93+0+80*2] = 1;
+	buffer1[93+0+80*3] = 1;
+	buffer1[93+1+80*4] = 1;
+	buffer1[93+2+80*4] = 1;
+	
+	// E
+	buffer1[97+0+80*0] = 1;
+	buffer1[97+1+80*0] = 1;
+	buffer1[97+2+80*0] = 1;
+	buffer1[97+0+80*1] = 1;
+	buffer1[97+0+80*2] = 1;
+	buffer1[97+1+80*2] = 1;
+	buffer1[97+0+80*3] = 1;
+	buffer1[97+0+80*4] = 1;
+	buffer1[97+1+80*4] = 1;
+	buffer1[97+2+80*4] = 1;
+	
+	// C
+	buffer1[561+1+80*0] = 1;
+	buffer1[561+2+80*0] = 1;
+	buffer1[561+0+80*1] = 1;
+	buffer1[561+0+80*2] = 1;
+	buffer1[561+0+80*3] = 1;
+	buffer1[561+1+80*4] = 1;
+	buffer1[561+2+80*4] = 1;
+	
+	// F
+	buffer1[1041+0+80*0] = 1;
+	buffer1[1041+1+80*0] = 1;
+	buffer1[1041+2+80*0] = 1;
+	buffer1[1041+0+80*1] = 1;
+	buffer1[1041+0+80*2] = 1;
+	buffer1[1041+1+80*2] = 1;
+	buffer1[1041+0+80*3] = 1;
+	buffer1[1041+0+80*4] = 1;
+	
+	// T
+	buffer1[1521+0+80*0] = 1;
+	buffer1[1521+1+80*0] = 1;
+	buffer1[1521+2+80*0] = 1;
+	buffer1[1521+1+80*1] = 1;
+	buffer1[1521+1+80*2] = 1;
+	buffer1[1521+1+80*3] = 1;
+	
+	// M
+	buffer1[2001+0+80*0] = 1;
+	buffer1[2001+0+80*1] = 1;
+	buffer1[2001+0+80*2] = 1;
+	buffer1[2001+0+80*3] = 1;
+	buffer1[2001+0+80*4] = 1;
+	buffer1[2001+1+80*1] = 1;
+	buffer1[2001+2+80*0] = 1;
+	buffer1[2001+2+80*1] = 1;
+	buffer1[2001+2+80*2] = 1;
+	buffer1[2001+2+80*3] = 1;
+	buffer1[2001+2+80*4] = 1;
+	
+	// 1
+	buffer1[2005+0+80*1] = 1;
+	buffer1[2005+1+80*0] = 1;
+	buffer1[2005+1+80*1] = 1;
+	buffer1[2005+1+80*2] = 1;
+	buffer1[2005+1+80*3] = 1;
+	buffer1[2005+0+80*4] = 1;
+	buffer1[2005+1+80*4] = 1;
+	buffer1[2005+2+80*4] = 1;
 
-	// buffer1[2367] = 1;
-	// buffer1[2447] = 1;
-	// buffer1[2527] = 1;
+	// M
+	buffer1[2481+0+80*0] = 1;
+	buffer1[2481+0+80*1] = 1;
+	buffer1[2481+0+80*2] = 1;
+	buffer1[2481+0+80*3] = 1;
+	buffer1[2481+0+80*4] = 1;
+	buffer1[2481+1+80*1] = 1;
+	buffer1[2481+2+80*0] = 1;
+	buffer1[2481+2+80*1] = 1;
+	buffer1[2481+2+80*2] = 1;
+	buffer1[2481+2+80*3] = 1;
+	buffer1[2481+2+80*4] = 1;
+	
+	// 2
+	buffer1[2485+0+80*0] = 1;
+	buffer1[2485+1+80*0] = 1;
+	buffer1[2485+2+80*0] = 1;
+	buffer1[2485+2+80*1] = 1;
+	buffer1[2485+2+80*2] = 1;
+	buffer1[2485+1+80*2] = 1;
+	buffer1[2485+0+80*2] = 1;
+	buffer1[2485+0+80*3] = 1;
+	buffer1[2485+0+80*4] = 1;
+	buffer1[2485+1+80*4] = 1;
+	buffer1[2485+2+80*4] = 1;
 
 	while (running) {
 		frameStart = SDL_GetTicks();
@@ -183,6 +299,7 @@ int main() {
 			if (!buffer1[i]) continue;
 
 			SDL_Rect r = {(i%80)*10, (int)(i/80)*10, 10, 10};
+			// SDL_SetRenderDrawColor(renderer, rand()%128+128, rand()%128+128, rand()%128+128, 255);
 			SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 			SDL_RenderFillRect(renderer, &r);
 			SDL_SetRenderDrawColor(renderer, 191, 191, 191, 255);
