@@ -4,16 +4,10 @@
   ./run.exe
  */
 
-// pacman -S mingw-w64-x86_64-cmake
+// pacman -S mingw-w64-x86_64-SDL2
+// g++ main.cpp -o CellA.exe -static -pthread -lmingw32 -lSDL2main /c/msys64/mingw64/lib/libSDL2.a -mwindows -lsetupapi -limm32 -lwinmm -ldxguid -lole32 -loleaut32 -lversion -static-libstdc++ -static-libgcc -I/c/msys64/mingw64/include/SDL2 -L/c/msys64/mingw64/lib
 
-// git clone https://github.com/libsdl-org/SDL.git
-// cd SDL
-// mkdir build && cd build
-// cmake -G "MinGW Makefiles" -DBUILD_SHARED_LIBS=OFF -DSDL_STATIC=ON ..
-// mingw32-make
-
-
-// g++ main.cpp -o Cells.exe -I/c/msys64/mingw64/include/SDL2 -L/msys64/mingw64/lib -lSDL2 -lSDL2main -static
+// order of linking matters
 
 // needed to prevent "undefined reference to `winMain`" (tells SDL that you are haldling the main function yourself)
 #define SDL_MAIN_HANDLED
