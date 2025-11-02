@@ -1,4 +1,4 @@
-# Conway's game of life, implemented in C++
+# [Conway's game of life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), implemented in C++
 
 ### Use `space` to pause and un-pause the game.<hr>
 
