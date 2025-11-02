@@ -1,5 +1,5 @@
 # [Conway's game of life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life), implemented in C++
-
+  [Demo.mp4](https://github.com/renebrucknerjnr/CPPway/blob/05b24d17173c26599ad4f652a92ff8f08ab40076/demo.mp4) here on github
 ### Use `space` to pause and un-pause the game.<hr>
 
 ### Use the mouse to place cells (left click places, while right click removes).
