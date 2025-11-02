@@ -10,3 +10,5 @@
 
 ### Use `T` to change the algorithm type (less than or equal to 4 neighbors will kill a cell, and more than 4 will create one).
    ![](t.png)
+---
+> CellA was compiled for 64 bit windows 11
